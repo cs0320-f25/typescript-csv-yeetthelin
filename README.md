@@ -3,6 +3,9 @@
 ### Task C: Proposing Enhancement
 
 - #### Step 1: Brainstorm on your own.
+Through the tests in Task A, I realized that the parser has a couple of bugs that prevent it from meeting the CSV specifications.
+First of all, whenever the parser encounters a comma, it automatically makes a new data field. This happens even when commas are enclosed in quotes, i.e. "veni, vidi, vici". The parser would split that into 3 different fields.
+The parser also 
 
 - #### Step 2: Use an LLM to help expand your perspective.
 
