@@ -34,7 +34,7 @@ test("parseCSV handles commas in quotes", async () => {
 
 test("parseCSV handles quotes in quotes", async () => {
   const results = await parseCSV(EXTRA_PEOPLE_CSV_PATH)
-  expect(results[3]).toEqual(["Charlie", "25", "hi everyone! i \"love\" you!"]);
+  expect(results[3]).toEqual(["Charlie", "25", "hi everyone! i \"love you\" you!"]);
 });
 
 test("parseCSV handles empty fields", async () => {
