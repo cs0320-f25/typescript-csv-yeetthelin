@@ -1,5 +1,6 @@
 import { parseCSV } from "../src/basic-parser";
 import * as path from "path";
+import { z } from "zod";
 
 const PEOPLE_CSV_PATH = path.join(__dirname, "../data/people.csv");
 const EXTRA_PEOPLE_CSV_PATH = path.join(__dirname, "../data/extra-people.csv");
@@ -22,6 +23,8 @@ test("parseCSV yields only arrays", async () => {
   }
 });
 
+// Tests for the old version of the parser
+
 test("parseCSV handles quoted numbers", async () => {
   const results = await parseCSV(EXTRA_PEOPLE_CSV_PATH)
   expect(results[1]).toEqual(["Alice", "23", "hello there!"]);
@@ -41,3 +44,6 @@ test("parseCSV handles empty fields", async () => {
   const results = await parseCSV(EXTRA_PEOPLE_CSV_PATH)
   expect(results[4]).toEqual(["Nim", "", ""]);
 });
+
+// New tests for the improved version of the parser
+
