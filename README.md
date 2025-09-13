@@ -9,7 +9,7 @@ The parser also adds extra quotes around the quoted fields in the CSV, and does 
 The parser always returns strings. Because of this, I believe that if the caller can provide a schema, it would be helpful so that the parser could validate the data and ensure all fields are consistent with their types, i.e. "thirty" in the age field.
 
 - #### Step 2: Use an LLM to help expand your perspective.
-The first time I prompted the LLM, it was less specific in addressing the issues in my parser and more focused on the general things a good parser would need. The second time, I added more details about this specific parser and the issues I ran into, and it was able to give me more improvements based on the specific issues I was facing rather than features it should have. On the third prompt, 
+The first time I prompted the LLM, it was less specific in addressing the issues in my parser and more focused on the general things a good parser would need. The second time, I added more details about this specific parser and the issues I ran into, and it was able to give me more improvements based on the specific issues I was facing rather than features it should have.
 
 - #### Step 3: Propose enhancements in your project README file
 
@@ -24,9 +24,8 @@ The first time I prompted the LLM, it was less specific in addressing the issues
     4. As a developer, I want the parser to correctly handle quoted fields and extra quotes so that commas inside quotes and escaped quotes are parsed into the expected field, instead of splitting incorrectly. (me)
 
     Include your notes from above: what were your initial ideas, what did the LLM suggest, and how did the results differ by prompt? What resonated with you, and what didn’t? (3-5 sentences.) 
-    My initial ideas were relating to the bugs I ran into, that were identified by my tests. I noticed that the parser wasn't properly handling quoted special characters like commas or extra quotes. The LLM also suggested these but in a more general sense, as I just prompted it for a general scanner and not my specific implementation. As I prompted it more, it began suggesting more things that help the extensibility of the parser, for example configuring the delimiter so that it can handle other pieces of data. 
+    My initial ideas were relating to the bugs I ran into, that were identified by my tests. I noticed that the parser wasn't properly handling quoted special characters like commas or extra quotes. The LLM also suggested these but in a more general sense, as I just prompted it for a general scanner and not my specific implementation. As I prompted it more, it began suggesting more things that help the extensibility of the parser, for example configuring the delimiter so that it can handle other pieces of data. Something that resonated with me the most is how the LLM suggested many things that would help the developer in terms of usability and extensibility, which helped me realize that there is a lot more to consider with a program than just its function.
     
-
 ### Design Choices
 
 - #### 1. Correctness
@@ -43,4 +42,6 @@ The first time I prompted the LLM, it was less specific in addressing the issues
 #### Collaborators (cslogins of anyone you worked with on this project and/or generative AI): 
 mmxian - We discussed how to stop the use of typecasting in the return statement because we had the same issue with both of our parsers.
 Following our discussion, I prompted ChatGPT to build upon what we had discussed and asked if it had suggestions about how to restructure a parser without typecasting. It suggested to split the parser into two parts: one where the schema is provided and one where it wasn't.
+
+### Estimated hours: 10
 #### Link to GitHub Repo: https://github.com/cs0320-f25/typescript-csv-yeetthelin.git

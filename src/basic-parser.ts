@@ -1,42 +1,39 @@
 import * as fs from "fs";
 import * as readline from "readline";
-import { ZodType } from "zod";
+import { ZodType, ZodSafeParseResult } from "zod";
 
 
 /**
- * This is a JSDoc comment. Similar to JavaDoc, it documents a public-facing
- * function for others to use. Most modern editors will show the comment when 
- * mousing over this function name. Try it in run-parser.ts!
- * 
- * File I/O in TypeScript is "asynchronous", meaning that we can't just
- * read the file and return its contents. You'll learn more about this 
- * in class. For now, just leave the "async" and "await" where they are. 
- * You shouldn't need to alter them.
+ * Parses a CSV file into an array of rows. Each row is either a string array (if no schema is provided), or
+ * a ZodSafeParseResult (if a schema is provided).
  * 
  * @param path The path to the file being loaded.
  * @returns a "promise" to produce a 2-d array of cell values
  */
-export async function parseCSV<T>(path: string, schema?: ZodType<T>): Promise<string[][] | T[]> {
-  // This initial block of code reads from a file in Node.js. The "rl"
-  // value can be iterated over in a "for" loop. 
+
+export async function parseCSV(path: string): Promise<string[][]>;
+export async function parseCSV<T>(
+  path: string,
+  schema: ZodType<T>
+): Promise<ZodSafeParseResult<T>[]>;
+
+export async function parseCSV<T>(path: string, schema?: ZodType<T>): Promise<string[][] | ZodSafeParseResult<T>[]> {
   const fileStream = fs.createReadStream(path);
   const rl = readline.createInterface({
     input: fileStream,
     crlfDelay: Infinity, // handle different line endings
   });
   
+  // If a schema is provided, validate each row
   if (schema) {
-    const result: T[] = [];
+    const result: ZodSafeParseResult<T>[] = [];
     for await (const line of rl) {
       const values = line.split(",").map((v) => v.trim());
-      const parsed = schema.safeParse(values);
-      if (parsed.success) {
-        result.push(parsed.data);
-      } else {
-        console.warn("Row failed validation:", values);
-      }
+      result.push(schema.safeParse(values));
     }
     return result;
+    
+  // If no schema is provided, just return string[][]
   } else {
     const result: string[][] = [];
     for await (const line of rl) {
