@@ -37,11 +37,14 @@ The first time I prompted the LLM, it was less specific in addressing the issues
     This could help with testing edge cases because if it is randomly generated, it could generate cases that I might not have thought of or cases that are more complicated. 
 
 - #### 3. Overall experience, Bugs encountered and resolved
-    One thing that surprised me compared to the intro CS sequence was how open ended it was. I think that I was used to the structure in the intro courses so I was a little overwhelmed at first. I didn't necessarily run into bugs, but I had to fix my code a couple of times due to the grading specifications. 
+    One thing that surprised me compared to the intro CS sequence was how open ended it was. I think that I was used to the structure in the intro courses so I was a little overwhelmed at first. 
+    A large bug I encountered was that my test suite had a lot of errors under the ".success". More about this under the collaborators section.
+
 
 #### Collaborators (cslogins of anyone you worked with on this project and/or generative AI): 
 mmxian - We discussed how to stop the use of typecasting in the return statement because we had the same issue with both of our parsers.
 Following our discussion, I prompted ChatGPT to build upon what we had discussed and asked if it had suggestions about how to restructure a parser without typecasting. It suggested to split the parser into two parts: one where the schema is provided and one where it wasn't.
+vzwang - We discussed the bug I ran into above and realized that overriding the method signature was an option in reference to Edstem post #56.
 
 ### Estimated hours: 10
 #### Link to GitHub Repo: https://github.com/cs0320-f25/typescript-csv-yeetthelin.git
