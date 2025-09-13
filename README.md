@@ -46,5 +46,12 @@ mmxian - We discussed how to stop the use of typecasting in the return statement
 Following our discussion, I prompted ChatGPT to build upon what we had discussed and asked if it had suggestions about how to restructure a parser without typecasting. It suggested to split the parser into two parts: one where the schema is provided and one where it wasn't.
 vzwang - We discussed the bug I ran into above and realized that overriding the method signature was an option in reference to Edstem post #56.
 
+## How to
+To run the tests in basic-parser.test.ts, go to the console and type in 'npm run test'. This will run all of the tests. 3 of the tests will fail, because these were the tests to help identify the improvements in the parser that should be implemented in the future.
+## Bugs
+N/A
+## Tests
+The tests that I added for the original version of the parser were used to identify any improvements that should be made on future versions of the parser. These included the handling of special characters like quoted commas or extra quotations. The tests for the new version of the parser that I wrote were to test the schema input. For these tests, I ensured to test multiple schemas, for example, making sure that the name was a string and the age was a number.
+
 ### Estimated hours: 10
 #### Link to GitHub Repo: https://github.com/cs0320-f25/typescript-csv-yeetthelin.git
